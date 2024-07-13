@@ -1,5 +1,5 @@
 from quectograd.engine import Value
-from quectograd.nn import Neuron, Layer, MLP
+from quectograd.nn import Module, Neuron, NeuronDebug, Layer, MLP
 
 # quectograd test
 

@@ -124,7 +124,7 @@ class Value:
     for node in reversed(topo):
       node._backward()
 
-  def zeros(dim, dtype=float):
+  def zeros(dim: tuple, dtype=float):
     assert len(dim) <= 2, "Until now the only dimension supported are: 1D and 2D."
     assert dtype == float or dtype == int, "Only supporting int/float data types"
     

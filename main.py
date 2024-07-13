@@ -9,6 +9,8 @@ xs = [
 ]
 ys = [1.0, -1.0, -1.0, 1.0]
 
+q = MLP(3, [4, 4, 1])
+
 step_size = 0.1
 
 for i in range(20):
