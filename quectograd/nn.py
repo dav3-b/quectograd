@@ -54,10 +54,7 @@ class Layer(Module):
     return [p for n in self.neurons for p in n.parameters()]
   
   def __repr__(self):
-    dict_layer = {}
-    for i in range(len(self.neurons)):
-      name = f"neuron{i}"
-      dict_layer[name] = self.neurons[i]
+    dict_layer = {f"neuron{i}":n for i,n in enumerate(self.neurons)}
     return f"{dict_layer}"
 
 class MLP(Module):
@@ -108,10 +105,7 @@ class LayerDebug(Layer):
     super().__init__(num_input_neurons, num_output_neurons, output_layer)
 
   def __repr__(self):
-    dict_layer = {}
-    for i in range(len(self.neurons)):
-      name = f"neuron{i}"
-      dict_layer[name] = self.neurons[i]
+    dict_layer = {f"neuron{i}":n for i,n in enumerate(self.neurons)}
     return f"Layer(\n {dict_layer}\n)"
 
 class MLPDebug(MLP):
@@ -129,3 +123,4 @@ class MLPDebug(MLP):
       dict_mlp[name] = self.layers[i]
     
     return f"MPL(\n  {dict_mlp}\n)"
+
