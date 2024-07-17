@@ -126,15 +126,32 @@ class Value:
 
   def item(self):
     return self.data
-
-  def zeros(dim: tuple, dtype=float):
-    assert len(dim) <= 2, "Until now the only dimension supported are: 1D and 2D."
+  
+  def zeros(*size, dtype=float):
+    assert len(size) <= 2, "Until now the only dimension supported are: 1D and 2D."
     assert dtype == float or dtype == int, "Only supporting int/float data types"
     
     x = 0.0
     if dtype == int:
       x = 0
-    return Value([[x for c in range(dim[1])] for r in range(dim[0])], dtype=dtype)
+    
+    if len(size) == 1:
+      return Value([x for r in range(size[0])], dtype=dtype)
+    elif len(size) == 2:
+      return Value([[x for c in range(size[1])] for r in range(size[0])], dtype=dtype)
+  
+  def ones(*size, dtype=float):
+    assert len(size) <= 2, "Until now the only dimension supported are: 1D and 2D."
+    assert dtype == float or dtype == int, "Only supporting int/float data types"
+    
+    x = 1.0
+    if dtype == int:
+      x = 1
+    
+    if len(size) == 1:
+      return Value([x for r in range(size[0])], dtype=dtype)
+    elif len(size) == 2:
+      return Value([[x for c in range(size[1])] for r in range(size[0])], dtype=dtype)
 
 # Sub-class for debugging porpuse
 DEBUG = False
